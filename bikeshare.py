@@ -21,12 +21,12 @@ def get_filters():
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     """
     print('Hello! Let\'s explore some US bikeshare data!')
-    
+
     #get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
     while True:
         try:
             city = input("Would you like to see data for Chicago, Washington, or New York?\n").lower()
-        except: 
+        except:
             print("Invalid input. Try again.\n")
             #for any error
         if city not in CITY_DATA:
@@ -34,12 +34,12 @@ def get_filters():
             #if user inputs string that doesn't match cities
         else:
             break
-              
+
     # get user input for month (all, january, february, ... , june)
     while True:
         try:
             month = input("Which month? Specify a month between January to June or type 'all' to select all of these months.\n").title()
-        except: 
+        except:
             print("Error. Please try again.\n")
             #for any error
         if month not in month_list:
@@ -54,7 +54,7 @@ def get_filters():
         try:
             day = input("Which day? Choose one specific day (Monday, Tuesday, etc.) or type 'all' if you want to see results for all days.\n").title()
             day_of_week = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday','All']
-        except: 
+        except:
             print("Invalid input. Please try again.\n")
             #for any error
         if day not in day_of_week:
@@ -113,13 +113,13 @@ def time_stats(df):
     # TO DO: display the most common day of week
     print("The most common day of the week is:", df['day_of_week'].mode()[0])
 
-    # TO DO: display the most common start 
+    # TO DO: display the most common start
     print("The most common start hour is:", df['hour'].mode()[0])
 
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
-    
+
 def station_stats(df):
     """Displays statistics on the most popular stations and trip."""
 
@@ -137,7 +137,7 @@ def station_stats(df):
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
-    
+
 def trip_duration_stats(df):
     """Displays statistics on the total and average trip duration."""
 
@@ -171,18 +171,18 @@ def user_stats(df):
     print("\nThe earliest year of birth is:", df['Birth Year'].min())
     print("The most recent year of birth is:", df['Birth Year'].max())
     print("The most common year of birth is:", df['Birth Year'].mode()[0])
-    
+
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
-#offer option to user for viewing raw data
 def raw_data(df):
+    """Offer option to user for viewing raw data."""
     row_start = 0
     row_end = 5
     answer = input("\nDo you want to see the raw data? Yes or No?\n").lower()
     while answer == "yes" and row_end <= len(df.index):
         print(df.iloc[row_start:row_end])
-        row_start += 5 
+        row_start += 5
         row_end += 5
         answer = input("Do you want more rows? Yes or No?\n").lower()
 
@@ -199,9 +199,9 @@ def main():
             user_stats(df)
         else:
             print('Gender and Birth Year stats cannot be calculated because these columns do not appear in the dataframe')
-            
+
         raw_data(df)
-        
+        """User can exit the raw data preview and restart if they do not answer yes."""
         restart = input('\nWould you like to restart? Enter yes or no.\n')
         if restart.lower() != 'yes':
             break
