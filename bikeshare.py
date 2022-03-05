@@ -25,7 +25,7 @@ def get_filters():
     #get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
     while True:
         try:
-            city = input("Would you like to see data for Chicago, Washington, or New York?\n").lower()
+            city = input("Which US city would you like to see data for: Chicago, Washington, or New York?\n").lower()
         except:
             print("Invalid input. Try again.\n")
             #for any error
@@ -179,12 +179,12 @@ def raw_data(df):
     """Offer option to user for viewing raw data."""
     row_start = 0
     row_end = 5
-    answer = input("\nDo you want to see the raw data? Yes or No?\n").lower()
+    answer = input("\nDo you want to see a snippet of the raw data? Yes or No?\n").lower()
     while answer == "yes" and row_end <= len(df.index):
         print(df.iloc[row_start:row_end])
         row_start += 5
         row_end += 5
-        answer = input("Do you want more rows? Yes or No?\n").lower()
+        answer = input("Do you want to see more data? Yes or No?\n").lower()
 
 
 def main():
